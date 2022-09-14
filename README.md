@@ -42,7 +42,7 @@ $ python training.py -cv cv_dir -pp pic_dir -lp label_path -sp save_path
 
 ## Visualization
 The interpretability of the Swin-T models was explored using visualization technology with Python package [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam).
-![image](https://github.com/Boomwwe/SOTA_MSI_prediction/blob/main/MSI_code/Figure6.png)
+![image](https://github.com/Boomwwe/SOTA_MSI_prediction/blob/main/MSI_code/Figure6(1).png)
 
 ## Citation
 If you use this for research, please cite. Here is an example BibTeX entry:
