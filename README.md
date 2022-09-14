@@ -1,7 +1,7 @@
 # SOTA_MSI_prediction
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-![image](https://github.com/Boomwwe/SOTA_MSI_prediction/MSI_code/Figure1.pdf)
+![image](https://github.com/Boomwwe/SOTA_MSI_prediction/MSI_code/Figure1.png)
 ## Table of Contents
 
 - [Extract tiles](#extract_tiles)
