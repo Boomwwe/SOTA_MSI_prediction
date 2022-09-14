@@ -29,7 +29,7 @@ $ python color_normalize.py -i input_dir -o output_dir
 ```
 
 ## Tumor_selection
-The image tiles were color-normalized using Macenko’s method to reduce the color bias and improve classifier performance and were subsequently resized to 224×224 px to serve as the input of the network. The orginal code of this step is from [Li et al.](https://github.com/1996lixingyu1996/CRCNet)
+The pre-trained tissue classifier was trained to detect and select tiles with tumor tissue.
 ```sh
 $ python select_tumor.py -i input_dir -o output_dir -mp model_path
 ```
