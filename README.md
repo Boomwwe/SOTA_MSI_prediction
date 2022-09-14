@@ -1,7 +1,11 @@
 # SOTA_MSI_prediction
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-![image](https://github.com/Boomwwe/SOTA_MSI_prediction/MSI_code/Figure1.png)
+
+We developed an efficient workflow for biomarkers in CRC (MSI, hypermutation, chromosomal
+instability, CpG island methylator phenotype, BRAF, and TP53 mutation) that required relatively small datasets, but achieved
+a state-of-the-art (SOTA) predictive performance.
+![image](https://github.com/Boomwwe/SOTA_MSI_prediction/blob/main/MSI_code/Figure1.png)
 ## Table of Contents
 
 - [Extract tiles](#extract_tiles)
