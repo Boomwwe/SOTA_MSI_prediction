@@ -10,6 +10,7 @@
 - [Pre-training model](#pre-training_model)
 - [Color normalization](#color_normalization)
 - [Tumor selection](#tumor_selection)
+- [Training model](#training_model)
 ## Extract_tiles
 
 The orginal code of this step is from [kather lab](https://github.com/KatherLab/preProcessing). And we modify it to generate tiles more easily.
@@ -38,11 +39,15 @@ The image tiles were color-normalized using Macenko’s method to reduce the col
 $ python select_tumor.py -i input_dir -o output_dir -mp model_path
 ```
 
-## Traing model
+## Training_model
 The pre-trained Swin-T model (tissue classifier) was fine-tuned for the binary classification of key CRC biomarkers at the patient (slide) level
 ```sh
 $ python training.py -cv cv_dir -pp pic_dir -lp label_path -sp save_path
 ```
+
+## Visualization
+The interpretability of the Swin-T models was explored using visualization technology with Python package [pytorch-grad-cam](https://github.com/jacobgil/pytorch-grad-cam).
+![image](https://github.com/Boomwwe/SOTA_MSI_prediction/blob/main/MSI_code/Figure6.png)
 
 ## Citation
 If you use this for research, please cite. Here is an example BibTeX entry:
@@ -52,14 +57,5 @@ If you use this for research, please cite. Here is an example BibTeX entry:
   author={Guo, Bangwei and Jonnagaddala, Jitendra and Zhang, Hong and Xu, Xu Steven},
   journal={arXiv preprint arXiv:2208.10495},
   year={2022}
-}
-```
-```
-@misc{guomsiprediction,
-  title={SOTA_MSI_prediction},
-  author={Bangwei Guo and contributors},
-  year={2022},
-  publisher={GitHub},
-  howpublished={\url{https://github.com/Boomwwe/SOTA_MSI_prediction}},
 }
 ```
