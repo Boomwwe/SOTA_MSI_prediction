@@ -42,94 +42,14 @@ class Net(nn.Module):
         self.backbone = SwinTransformer(**swin_tiny_cfg)
         self.backbone.load_state_dict(
             torch.load("/data/gbw/TCGA_CRC/backbone.pth"))
-        self.fc1 = nn.Linear(768, 256)
-        self.dropout = nn.Dropout(0.3)
-        self.fc2 = nn.Linear(256, 32)
-        self.fc3 = nn.Linear(32, 2)
-        self.relu = nn.ReLU()
+        self.fc1 = nn.Linear(768, 2)
+
 
     def forward(self, x):
         x = self.backbone.forward_features(x)  # [batch_size, 768]
         x = self.fc1(x)
-        x = self.relu(x)
-        x = self.dropout(x)
-        x = self.fc2(x)
-        x = self.relu(x)
-        x = self.dropout(x)
-        x = self.fc3(x)  # [batch_size, 2]
         return x
 
-
-def cv_pic_list(cv,path_dir,label_execl,spilt_path):
-    cv_splits =  pickle.load(open(spilt_path, 'rb'))
-    path_dir = path_dir
-    label_execl = pd.read_csv(label_execl)
-
-    train_patient_list = cv_splits[cv]["train_set"]
-    train_MSI_patient_list = []
-    train_MSS_patient_list = []
-    for i in train_patient_list:
-        if label_execl[label_execl["Patient"] == i[0:12]]["MSI"].item() == 1:
-            train_MSI_patient_list.append(i)
-        else:
-            train_MSS_patient_list.append(i)
-    train_pic_list = []
-    train_label_list = []
-    for name in train_MSI_patient_list:
-        train_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in train_file_pic_list:
-            train_pic_list.append(path_dir + "/" + name + "/" + j)
-            train_label_list.append(1)
-    for name in train_MSS_patient_list:
-        train_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in train_file_pic_list:
-            train_pic_list.append(path_dir + "/" + name + "/" + j)
-            train_label_list.append(0)
-
-    vali_patient_list = cv_splits[cv]["vali_set"]
-    vali_MSI_patient_list = []
-    vali_MSS_patient_list = []
-    for i in vali_patient_list:
-        if label_execl[label_execl["Patient"] == i[0:12]]["MSI"].item() == 1:
-            vali_MSI_patient_list.append(i)
-        else:
-            vali_MSS_patient_list.append(i)
-    vali_pic_list = []
-    vali_label_list = []
-    for name in vali_MSI_patient_list:
-        vali_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in vali_file_pic_list:
-            vali_pic_list.append(path_dir + "/" + name + "/" + j)
-            vali_label_list.append(1)
-    for name in vali_MSS_patient_list:
-        vali_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in vali_file_pic_list:
-            vali_pic_list.append(path_dir + "/" + name + "/" + j)
-            vali_label_list.append(0)
-
-
-    test_patient_list = cv_splits[cv]["test_set"]
-    test_MSI_patient_list = []
-    test_MSS_patient_list = []
-    for i in test_patient_list:
-        if label_execl[label_execl["Patient"] == i[0:12]]["label"].item() == 1:
-            test_MSI_patient_list.append(i)
-        else:
-            test_MSS_patient_list.append(i)
-    test_pic_list = []
-    test_label_list = []
-    for name in test_MSI_patient_list:
-        test_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in test_file_pic_list:
-            test_pic_list.append(path_dir + "/" + name + "/" + j)
-            test_label_list.append(1)
-    for name in test_MSS_patient_list:
-        test_file_pic_list = os.listdir(path_dir + "/" + name)
-        for j in test_file_pic_list:
-            test_pic_list.append(path_dir + "/" + name + "/" + j)
-            test_label_list.append(0)
-
-    return train_pic_list, train_label_list, vali_pic_list, vali_label_list,test_pic_list, test_label_list
 
 
 def train(epoch):
