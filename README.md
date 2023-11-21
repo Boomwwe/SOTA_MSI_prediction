@@ -47,10 +47,14 @@ The interpretability of the Swin-T models was explored using visualization techn
 ## Citation
 If you use this for research, please cite. Here is an example BibTeX entry:
 ```
-@article{guo2022predicting,
-  title={Predicting microsatellite instability and key biomarkers in colorectal cancer from H\&E-stained images: Achieving SOTA with Less Data using Swin Transformer},
-  author={Guo, Bangwei and Jonnagaddala, Jitendra and Zhang, Hong and Xu, Xu Steven},
-  journal={arXiv preprint arXiv:2208.10495},
-  year={2022}
+@article{guo2023predicting,
+  title={Predicting microsatellite instability and key biomarkers in colorectal cancer from H\&E-stained images: achieving state-of-the-art predictive performance with fewer data using Swin Transformer},
+  author={Guo, Bangwei and Li, Xingyu and Yang, Miaomiao and Jonnagaddala, Jitendra and Zhang, Hong and Xu, Xu Steven},
+  journal={The Journal of Pathology: Clinical Research},
+  volume={9},
+  number={3},
+  pages={223--235},
+  year={2023},
+  publisher={Wiley Online Library}
 }
 ```
